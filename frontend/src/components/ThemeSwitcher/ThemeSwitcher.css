@@ -1,0 +1,134 @@
+.theme-switcher {
+  position: relative;
+}
+
+.theme-switcher-trigger {
+  gap: 6px;
+  padding: 8px 12px !important;
+}
+
+.theme-switcher-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
+  position: relative;
+  z-index: 20;
+}
+
+.theme-switcher-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 260px;
+  padding: 12px;
+  z-index: 220;
+  animation: themeMenuIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes themeMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.theme-switcher-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  padding: 4px 8px 10px;
+  margin: 0;
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
+  position: relative;
+  z-index: 20;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition-fast);
+  color: var(--text-primary);
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
+  position: relative;
+  z-index: 20;
+}
+
+.theme-option:hover {
+  background: var(--hover-bg);
+  border-color: var(--card-border);
+}
+
+.theme-option.is-active {
+  background: var(--accent-subtle-bg);
+  border-color: var(--card-border);
+}
+
+.theme-option-swatches {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.theme-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.theme-option-text strong {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.theme-option-text small {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.theme-option-check {
+  color: var(--icon-accent);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .theme-switcher-label {
+    display: none;
+  }
+
+  .theme-switcher-menu {
+    right: -8px;
+    min-width: 240px;
+  }
+}

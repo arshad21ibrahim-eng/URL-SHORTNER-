@@ -1,0 +1,64 @@
+/* ═══ Luxury decorative background layers ═══ */
+
+@keyframes luxuryShimmer {
+  0%, 100% {
+    opacity: 0.35;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateY(-1%) scale(1.01);
+  }
+}
+
+body {
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.6s ease;
+}
+
+body::before {
+  background: var(--bg-mesh);
+  background-size: 100% 100%, 100% 100%, auto;
+  opacity: 1;
+}
+
+body::after {
+  background: var(--bg-shimmer);
+  animation: luxuryShimmer 14s ease-in-out infinite;
+}
+
+.network-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+.app-wrapper {
+  position: relative;
+  z-index: 2;
+}
