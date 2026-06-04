@@ -16,7 +16,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow Vite Frontend
+  origin: 'https://url-shortner-olive-ten.vercel.app', // Allow Vite Frontend
   credentials: true
 }));
 app.use(express.json());
