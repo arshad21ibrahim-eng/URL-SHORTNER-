@@ -131,7 +131,7 @@ This repository is **completely self-contained** and uses a local MongoDB databa
 ---
 
 ## 📺 Demonstration Video
-[Click here to watch the application explanation and walkthrough video (Loom/YouTube link placeholder)](https://loom.com/share/placeholder_link_url_shortener_analytics)
+[Click here to watch the application explanation and walkthrough video (Loom/YouTube link placeholder)](https://youtu.be/zwtlrgvegX4?feature=shared)
 
 ---
 
