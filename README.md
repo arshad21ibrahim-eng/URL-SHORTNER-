@@ -117,8 +117,8 @@ This repository is **completely self-contained** and uses a local MongoDB databa
    ```
 
 4. **Access the Applications**:
-   - **Frontend UI Panel**: [http://localhost:5173](http://localhost:5173)
-   - **Restful API Server**: [http://localhost:5000](http://localhost:5000)
+   - **Frontend UI Panel**: https://url-shortner-olive-ten.vercel.app/
+   - **Restful API Server**: https://url-shortner-bjb3.onrender.com
 
 ---
 
