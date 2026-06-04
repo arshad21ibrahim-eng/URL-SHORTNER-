@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../App';
 import { Lock, Mail, User, AlertCircle, Sparkles } from 'lucide-react';
+import API_URL from '../config';
 
 export default function Auth() {
   const { login, user } = useAuth();
@@ -59,7 +60,7 @@ export default function Auth() {
     const payload = isLogin ? { email, password } : { username, email, password };
 
     try {
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
+      const response = await fetch(`${API_URL}${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

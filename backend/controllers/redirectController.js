@@ -80,7 +80,7 @@ export const redirectUrl = async (req, res) => {
             <h1>404</h1>
             <h2>Oops! Link Not Found</h2>
             <p>The shortened URL link you are trying to access does not exist or has been deleted by its owner.</p>
-            <a href="http://localhost:5173" class="btn">Go to Dashboard</a>
+            <a href="${process.env.FRONTEND_URL || 'https://your-frontend.vercel.app'}" class="btn">Go to Dashboard</a>
           </div>
         </body>
         </html>
@@ -149,7 +149,7 @@ export const redirectUrl = async (req, res) => {
             <h1>Link Expired</h1>
             <h2>Access Period Ended</h2>
             <p>This shortened link had an expiration date set by its creator and is no longer active.</p>
-            <a href="http://localhost:5173" class="btn">Go to Dashboard</a>
+            <a href="${process.env.FRONTEND_URL || 'https://your-frontend.vercel.app'}" class="btn">Go to Dashboard</a>
           </div>
         </body>
         </html>

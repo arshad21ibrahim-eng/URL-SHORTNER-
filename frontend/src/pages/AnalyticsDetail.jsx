@@ -6,6 +6,7 @@ import {
   Smartphone, Laptop, Compass, AlertCircle, 
   Calendar, ShieldAlert, Link2
 } from 'lucide-react';
+import API_URL from '../config';
 
 export default function AnalyticsDetail() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export default function AnalyticsDetail() {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/urls/${id}`, {
+        const res = await fetch(`${API_URL}/api/urls/${id}`, {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }
@@ -113,7 +114,7 @@ export default function AnalyticsDetail() {
             <span>Link Performance Insights</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-            Detailed metrics for: <strong>http://localhost:5000/r/{url.customAlias || url.shortCode}</strong>
+            Detailed metrics for: <strong>{API_URL}/r/{url.customAlias || url.shortCode}</strong>
           </p>
         </div>
       </div>

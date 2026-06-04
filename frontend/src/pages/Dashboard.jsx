@@ -9,6 +9,7 @@ import {
   HelpCircle, ChevronDown, ChevronUp, Check, 
   AlertCircle, ArrowRight, Edit3, X, Download
 } from 'lucide-react';
+import API_URL from '../config';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -74,7 +75,7 @@ export default function Dashboard() {
     try {
       const responses = await Promise.all(
         selectedIds.map((id) =>
-          fetch(`http://localhost:5000/api/urls/${id}`, {
+          fetch(`${API_URL}/api/urls/${id}`, {
             method: 'DELETE',
             headers: {
               Authorization: `Bearer ${user.token}`
@@ -120,7 +121,7 @@ export default function Dashboard() {
   // Fetch user links
   const fetchUrls = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/urls', {
+      const res = await fetch(`${API_URL}/api/urls`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -152,7 +153,7 @@ export default function Dashboard() {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/urls', {
+      const res = await fetch(`${API_URL}/api/urls`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -194,7 +195,7 @@ export default function Dashboard() {
 
   // Handle Copy to clipboard
   const handleCopy = (code) => {
-    const fullShortUrl = `http://localhost:5000/r/${code}`;
+    const fullShortUrl = `${API_URL}/r/${code}`;
     navigator.clipboard.writeText(fullShortUrl);
     setCopiedCode(code);
     
@@ -211,7 +212,7 @@ export default function Dashboard() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/urls/${id}`, {
+      const res = await fetch(`${API_URL}/api/urls/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`
@@ -244,7 +245,7 @@ export default function Dashboard() {
     setEditLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/urls/${activeEditUrl._id}`, {
+      const res = await fetch(`${API_URL}/api/urls/${activeEditUrl._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -469,7 +470,7 @@ export default function Dashboard() {
     setBulkResult(null);
 
     try {
-      const res = await fetch('http://localhost:5000/api/urls/bulk', {
+      const res = await fetch(`${API_URL}/api/urls/bulk`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -659,7 +660,7 @@ export default function Dashboard() {
           {urls.map((urlObj) => {
             const isExpired = urlObj.expiresAt && new Date(urlObj.expiresAt) < new Date();
             const displayCode = urlObj.customAlias || urlObj.shortCode;
-            const fullShortUrl = `http://localhost:5000/r/${displayCode}`;
+            const fullShortUrl = `${API_URL}/r/${displayCode}`;
             const isSelected = selectedIds.includes(urlObj._id);
 
             return (
@@ -775,7 +776,7 @@ export default function Dashboard() {
               <div className="qr-wrapper">
                 <QRCodeCanvas 
                   id={`qr-canvas-${activeQrUrl.customAlias || activeQrUrl.shortCode}`}
-                  value={`http://localhost:5000/r/${activeQrUrl.customAlias || activeQrUrl.shortCode}`}
+                  value={`${API_URL}/r/${activeQrUrl.customAlias || activeQrUrl.shortCode}`}
                   size={200}
                   bgColor="#ffffff"
                   fgColor="#000000"
@@ -785,7 +786,7 @@ export default function Dashboard() {
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', textAlign: 'center', wordBreak: 'break-all' }}>
                 Scan to redirect to:<br />
-                <strong>http://localhost:5000/r/{activeQrUrl.customAlias || activeQrUrl.shortCode}</strong>
+                <strong>{API_URL}/r/{activeQrUrl.customAlias || activeQrUrl.shortCode}</strong>
               </p>
               
               <button 
